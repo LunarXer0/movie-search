@@ -25,5 +25,18 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
+  ],
+  "devDependencies": {
+    "babel-plugin-import": "^1.11.0"
+  },
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": "css"
+      }
+    ]
   ]
 }
