@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import { Input } from "antd";
 
@@ -14,4 +15,4 @@ export const TMDBSvg = () => (
 
 const Search = () => <Input placeholder="Movie Title" size="small" />;
 
-export default Search;
+export default connect()(Search);

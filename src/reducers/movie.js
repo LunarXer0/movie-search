@@ -1,6 +1,9 @@
 const GET_MOVIE = "GET_MOVIE";
+const initialState = {
+  initialLoad: false
+};
 
-const movie = (state = {}, action) => {
+const movie = (state = initialState, action) => {
   const { type } = action;
   switch (type) {
     case GET_MOVIE:
