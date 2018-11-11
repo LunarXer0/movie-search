@@ -1,4 +1,5 @@
 import { API_KEY } from "../utils/api";
+import { LOAD_INITIAL_MOVIE } from "../reducers/movie";
 
 export function loadInitialMovie() {
   return async function(dispatch) {
@@ -7,7 +8,7 @@ export function loadInitialMovie() {
     );
     const movie = await res.json();
     return dispatch({
-      type: "LOAD_INITIAL_MOVIE",
+      type: LOAD_INITIAL_MOVIE,
       data: movie.results
     });
   };

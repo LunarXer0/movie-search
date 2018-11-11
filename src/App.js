@@ -11,6 +11,7 @@ import rootReducer from "./reducers/rootReducer";
 import "./App.css";
 
 import Search, { TMDBSvg } from "./components/Search";
+import Poster from "./components/Poster";
 import { getMovie } from "./utils/api";
 
 import { Row, Col, Layout } from "antd";
@@ -40,7 +41,9 @@ const App = () => (
             </Col>
           </Row>
           <Row type="flex" justify="center" align="middle">
-            <Col span={6}>Image</Col>
+            <Col span={6}>
+              <Poster />
+            </Col>
             <Col style={{ textAlign: "center", background: "red" }} span={10}>
               <MovieDetails />
             </Col>
