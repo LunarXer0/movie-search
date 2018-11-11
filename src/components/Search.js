@@ -8,16 +8,10 @@ export const TMDBSvg = () => (
   <img
     src="../images/logo.png"
     alt="The Online Movie Database Logo"
-    height="100px"
+    height="300px"
   />
 );
 
-const Search = () => (
-  <Input
-    placeholder="Movie Title"
-    size="small"
-    style={{ outline: "none", background: "transparent" }}
-  />
-);
+const Search = () => <Input placeholder="Movie Title" size="small" />;
 
 export default Search;
