@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
@@ -10,12 +10,7 @@ import rootReducer from "./reducers/rootReducer";
 
 import "./App.css";
 
-import Search, { TMDBSvg } from "./components/Search";
-import Poster from "./components/Poster";
-import { getMovie } from "./utils/api";
-
-import { Row, Col, Layout } from "antd";
-import MovieDetails from "./components/MovieDetails";
+import AppLayout from "./components/AppLayout";
 
 const middleware = [logger, thunk];
 
@@ -25,32 +20,9 @@ const movie = createStore(
   composeWithDevTools(applyMiddleware(...middleware))
 );
 
-const { Content } = Layout;
-
 const App = () => (
   <Provider store={movie}>
-    <Fragment>
-      <Layout style={{ minHeight: "100vh" }}>
-        <Content style={{ marginTop: "100px" }}>
-          <Row type="flex" justify="center" align="middle">
-            <Col style={{ textAlign: "center", background: "green" }} span={6}>
-              <TMDBSvg />
-            </Col>
-            <Col style={{ textAlign: "center", background: "#ddd" }} span={10}>
-              <Search />
-            </Col>
-          </Row>
-          <Row type="flex" justify="center" align="middle">
-            <Col span={6}>
-              <Poster />
-            </Col>
-            <Col style={{ textAlign: "center", background: "red" }} span={10}>
-              <MovieDetails />
-            </Col>
-          </Row>
-        </Content>
-      </Layout>
-    </Fragment>
+    <AppLayout />
   </Provider>
 );
 

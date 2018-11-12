@@ -1,31 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { loadInitialMovie } from "../actions/movie";
 
-class Poster extends Component {
-  componentDidMount() {
-    this.props.loadInitialMovie();
-  }
-  render() {
-    return <div>Image goes here</div>;
-  }
-}
+const Poster = ({ displayedMovie, initialLoad }) => (
+  <div>
+    {!initialLoad ? (
+      <h1>Test</h1>
+    ) : (
+      <img
+        src={`http://image.tmdb.org/t/p/w300${displayedMovie.poster_path}`}
+        alt="Movie Poster"
+      />
+    )}
+  </div>
+);
 
 const mapStateToProps = state => ({
   initialLoad: state.movie.initialLoad,
-  initialMovie: state.movie.initialMovie
+  displayedMovie: state.movie.displayedMovie
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      loadInitialMovie
-    },
-    dispatch
-  );
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Poster);
+export default connect(mapStateToProps)(Poster);

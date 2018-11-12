@@ -4,12 +4,13 @@ import { LOAD_INITIAL_MOVIE } from "../reducers/movie";
 export function loadInitialMovie() {
   return async function(dispatch) {
     const res = await fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&language=en-US&query=Baby%20Driver&page=1&include_adult=false`
+      `https://api.themoviedb.org/3/movie/157336?api_key=${API_KEY}&language=en-US`
     );
     const movie = await res.json();
+    console.log(movie);
     return dispatch({
       type: LOAD_INITIAL_MOVIE,
-      data: movie.results
+      data: movie
     });
   };
 }

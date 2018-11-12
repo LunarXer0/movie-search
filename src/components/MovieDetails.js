@@ -1,15 +1,44 @@
-import React, { Component } from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
-import { loadInitialMovie } from "../actions/movie";
 
-class MovieDetails extends Component {
-  componentDidMount() {
-    loadInitialMovie();
+const MovieDetails = ({ displayedMovie, initialLoad }) => (
+  <div>
+    {!initialLoad ? (
+      <h1>Loading..</h1>
+    ) : (
+      <Fragment>
+        <h1 style={{ color: "#fafafa" }}>{displayedMovie.title}</h1>
+        <span style={{ color: "#00FC87", fontSize: "1.3em" }}>
+          {displayedMovie.tagline}
+        </span>
+        <p style={{ color: "#fafafa", marginBottom: "1rem" }}>
+          {displayedMovie.overview}
+        </p>
+        <span style={{ color: "#00FC87", fontSize: "1.4em" }}>
+          {handleGenres(displayedMovie.genres)}
+        </span>
+      </Fragment>
+    )}
+  </div>
+);
+
+function handleGenres(genres) {
+  console.log(genres);
+  let genreArr = [],
+    string;
+  if (genres !== undefined) {
+    genres.forEach(genre => {
+      genreArr.push(genre.name);
+    });
   }
-  render() {
-    return <div>Movie Details</div>;
-  }
+  string = genreArr.join(",");
+  console.log(string);
+  return string;
 }
 
-const mapStateToProps = dispatch => {};
-export default connect()(MovieDetails);
+const mapStateToProps = state => ({
+  initialLoad: state.movie.initialLoad,
+  displayedMovie: state.movie.displayedMovie
+});
+
+export default connect(mapStateToProps)(MovieDetails);

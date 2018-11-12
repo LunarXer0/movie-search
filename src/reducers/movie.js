@@ -3,7 +3,7 @@ export const LOAD_INITIAL_MOVIE = "LOAD_INITIAL_MOVIE";
 
 const initialState = {
   initialLoad: false,
-  initialMovie: [],
+  displayedMovie: [],
   movies: []
 };
 
@@ -14,7 +14,7 @@ const movie = (state = initialState, action) => {
       return {
         ...state,
         initialLoad: true,
-        initialMovie: data
+        displayedMovie: data
       };
     case GET_MOVIE:
       return state;
