@@ -11,16 +11,28 @@ import { Row, Col, Layout } from "antd";
 
 class AppLayout extends Component {
   componentDidMount() {
-    const { initialLoad, loadInitialMovie } = this.props;
+    const { initialLoad, displayedMovie, loadInitialMovie } = this.props;
     if (initialLoad === false) {
       loadInitialMovie();
+    } else {
+      document.body.style.background = `url(http://image.tmdb.org/t/p/w1280${
+        displayedMovie.backdrop_path
+      })`;
     }
   }
   render() {
     const { Content } = Layout;
+    const { displayedMovie } = this.props;
     return (
       <Fragment>
-        <Layout style={{ minHeight: "100vh" }}>
+        <Layout
+          style={{
+            minHeight: "100vh",
+            background: `url(http://image.tmdb.org/t/p/w1280${
+              displayedMovie.backdrop_path
+            })`
+          }}
+        >
           <Content style={{ marginTop: "100px" }}>
             <Row type="flex" justify="center" align="middle">
               <Col
@@ -55,7 +67,8 @@ class AppLayout extends Component {
 }
 
 const mapStateToProps = state => ({
-  initialLoad: state.movie.initialLoad
+  initialLoad: state.movie.initialLoad,
+  displayedMovie: state.movie.displayedMovie
 });
 
 const mapDispatchToProps = dispatch =>
