@@ -19,7 +19,6 @@ class AppLayout extends Component {
     }
   }
   render() {
-    const { displayedMovie } = this.props;
     return (
       <Fragment>
         <Search />
