@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import styled from "styled-components";
@@ -22,7 +22,7 @@ class AppLayout extends Component {
   render() {
     return (
       <Grid>
-        {/* <Search /> */}
+        <Search />
 
         <Poster />
 

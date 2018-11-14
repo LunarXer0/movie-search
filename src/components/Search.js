@@ -18,6 +18,7 @@ import { AutoComplete } from "antd";
 
 const Search = ({ searchMovies, movies }) => (
   <AutoComplete
+    style={{ gridColumn: "1 / -1" }}
     placeholder="Movie Title"
     dataSource={handleMovies(movies)}
     onSelect={value => console.log(value)}
@@ -27,7 +28,8 @@ const Search = ({ searchMovies, movies }) => (
 
 function handleMovies(movies) {
   let moviesArr = [];
-  return (moviesArr = movies.map(movie => movie.title));
+  moviesArr = movies.map(movie => movie.title);
+  return moviesArr;
 }
 
 const mapStateToProps = state => ({

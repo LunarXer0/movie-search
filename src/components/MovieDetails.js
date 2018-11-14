@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { Row, Col } from "antd";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
