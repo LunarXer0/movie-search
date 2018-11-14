@@ -1,87 +1,49 @@
 import React, { Fragment } from "react";
-import { Row, Col } from "antd";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
 const MovieDetails = ({ displayedMovie, initialLoad }) => (
-  <div className="details">
+  <DetailsDiv>
     {!initialLoad ? (
       <h1>Loading..</h1>
     ) : (
       <Fragment>
-        <h1 style={{ color: "#fafafa" }}>{displayedMovie.title}</h1>
-        <span style={{ color: "#00FC87", fontSize: "1.3em" }}>
-          {displayedMovie.tagline}
-        </span>
-        <p style={{ color: "#fafafa", marginBottom: "1rem" }}>
-          {displayedMovie.overview}
-        </p>
-        <span style={{ color: "#00FC87", fontSize: "1.4em" }}>
-          {handleGenres(displayedMovie.genres)}
-        </span>
+        <h1>{displayedMovie.title}</h1>
+        <span className="tagline">{displayedMovie.tagline}</span>
+        <p className="overview">{displayedMovie.overview}</p>
+        <span className="genres">{handleGenres(displayedMovie.genres)}</span>
         <span
           style={{ color: "#fafafa", display: "block", marginBottom: "20px" }}
         >
           {handleGenres(displayedMovie.production_companies)}
         </span>
-        <Row style={{ marginBottom: "20px" }}>
-          <Col span={10}>
-            <span style={{ color: "#fafafa" }}>Original Release:</span>
-            <span
-              style={{
-                color: "#00FC87",
-                fontSize: "1.6em",
-                lineHeight: "1.1em",
-                display: "block"
-              }}
-            >
-              {displayedMovie.release_date}
-            </span>
-          </Col>
-          <Col span={10}>
-            <span style={{ color: "#fafafa" }}>Running Time:</span>
-            <span
-              style={{
-                color: "#00FC87",
-                fontSize: "1.6em",
-                lineHeight: "1.1em",
-                display: "block"
-              }}
-            >
-              {displayedMovie.runtime} mins
-            </span>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={10}>
-            <span style={{ color: "#fafafa" }}>Box Office:</span>
-            <span
-              style={{
-                color: "#00FC87",
-                fontSize: "1.6em",
-                lineHeight: "1.1em",
-                display: "block"
-              }}
-            >
-              {displayedMovie.revenue}
-            </span>
-          </Col>
-          <Col span={10}>
-            <span style={{ color: "#fafafa" }}>Vote Average:</span>
-            <span
-              style={{
-                color: "#00FC87",
-                fontSize: "1.6em",
-                lineHeight: "1.1em",
-                display: "block"
-              }}
-            >
-              {displayedMovie.vote_average} / 10
-            </span>
-          </Col>
-        </Row>
+        <Stats>
+          <div>
+            Original Release: <br />
+            <span>{displayedMovie.release_date}</span>
+          </div>
+
+          <div>
+            Running Time:
+            <br />
+            <span>{displayedMovie.runtime}</span> mins
+          </div>
+
+          <div>
+            Box Office:
+            <br />
+            <span>{displayedMovie.revenue}</span>
+          </div>
+
+          <div>
+            Vote Average:
+            <br />
+            <span>{displayedMovie.vote_average} / 10</span>
+          </div>
+        </Stats>
       </Fragment>
     )}
-  </div>
+  </DetailsDiv>
 );
 
 function handleGenres(genres) {
@@ -104,3 +66,34 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(MovieDetails);
+
+const DetailsDiv = styled.div`
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 25px;
+  color: #fafafa;
+
+  h1 {
+    color: #fafafa;
+  }
+
+  .tagline {
+    font-size: 1.3em;
+    color: #00fc87;
+  }
+
+  .overview {
+    marginbottom: 1rem;
+  }
+
+  .genres {
+    color: #00fc87;
+    font-size: 1.4em;
+  }
+`;
+
+const Stats = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+`;
