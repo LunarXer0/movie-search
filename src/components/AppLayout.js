@@ -7,8 +7,6 @@ import Poster from "./Poster";
 import MovieDetails from "./MovieDetails";
 import { loadInitialMovie } from "../actions/movie";
 
-import { Row, Col, Layout } from "antd";
-
 class AppLayout extends Component {
   componentDidMount() {
     const { initialLoad, displayedMovie, loadInitialMovie } = this.props;
@@ -21,7 +19,6 @@ class AppLayout extends Component {
     }
   }
   render() {
-    const { Content } = Layout;
     const { displayedMovie } = this.props;
     return (
       <Fragment>
