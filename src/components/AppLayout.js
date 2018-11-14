@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
+import styled from "styled-components";
 
 import Search from "./Search";
 import Poster from "./Poster";
@@ -20,13 +21,13 @@ class AppLayout extends Component {
   }
   render() {
     return (
-      <Fragment>
-        <Search />
+      <Grid>
+        {/* <Search /> */}
 
         <Poster />
 
         <MovieDetails />
-      </Fragment>
+      </Grid>
     );
   }
 }
@@ -48,3 +49,14 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(AppLayout);
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  .details {
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    padding: 25px;
+  }
+`;
