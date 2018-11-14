@@ -18,62 +18,30 @@ const MovieDetails = ({ displayedMovie, initialLoad }) => (
         >
           {handleGenres(displayedMovie.production_companies)}
         </span>
-        <Row style={{ marginBottom: "20px" }}>
-          <Col span={10}>
-            <span style={{ color: "#fafafa" }}>Original Release:</span>
-            <span
-              style={{
-                color: "#00FC87",
-                fontSize: "1.6em",
-                lineHeight: "1.1em",
-                display: "block"
-              }}
-            >
-              {displayedMovie.release_date}
-            </span>
-          </Col>
-          <Col span={10}>
-            <span style={{ color: "#fafafa" }}>Running Time:</span>
-            <span
-              style={{
-                color: "#00FC87",
-                fontSize: "1.6em",
-                lineHeight: "1.1em",
-                display: "block"
-              }}
-            >
-              {displayedMovie.runtime} mins
-            </span>
-          </Col>
-        </Row>
-        <Row>
-          <Col span={10}>
-            <span style={{ color: "#fafafa" }}>Box Office:</span>
-            <span
-              style={{
-                color: "#00FC87",
-                fontSize: "1.6em",
-                lineHeight: "1.1em",
-                display: "block"
-              }}
-            >
-              {displayedMovie.revenue}
-            </span>
-          </Col>
-          <Col span={10}>
-            <span style={{ color: "#fafafa" }}>Vote Average:</span>
-            <span
-              style={{
-                color: "#00FC87",
-                fontSize: "1.6em",
-                lineHeight: "1.1em",
-                display: "block"
-              }}
-            >
-              {displayedMovie.vote_average} / 10
-            </span>
-          </Col>
-        </Row>
+        <Stats>
+          <div>
+            Original Release: <br />
+            <span>{displayedMovie.release_date}</span>
+          </div>
+
+          <div>
+            Running Time:
+            <br />
+            <span>{displayedMovie.runtime}</span> mins
+          </div>
+
+          <div>
+            Box Office:
+            <br />
+            <span>{displayedMovie.revenue}</span>
+          </div>
+
+          <div>
+            Vote Average:
+            <br />
+            <span>{displayedMovie.vote_average} / 10</span>
+          </div>
+        </Stats>
       </Fragment>
     )}
   </DetailsDiv>
@@ -127,4 +95,6 @@ const DetailsDiv = styled.div`
 
 const Stats = styled.div`
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
 `;

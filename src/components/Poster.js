@@ -8,6 +8,7 @@ const Poster = ({ displayedMovie, initialLoad }) => (
     ) : (
       <img
         src={`http://image.tmdb.org/t/p/w300${displayedMovie.poster_path}`}
+        // style={{ height: "100%" }}
         alt="Movie Poster"
       />
     )}

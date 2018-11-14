@@ -51,6 +51,8 @@ export default connect(
 )(AppLayout);
 
 const Grid = styled.div`
+  width: 60%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: auto 0.5fr;
+  justify-items: end;
 `;
