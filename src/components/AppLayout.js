@@ -27,6 +27,7 @@ class AppLayout extends Component {
         <Poster />
 
         <MovieDetails />
+      
       </Grid>
     );
   }
