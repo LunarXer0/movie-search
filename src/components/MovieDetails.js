@@ -3,7 +3,7 @@ import { Row, Col } from "antd";
 import { connect } from "react-redux";
 
 const MovieDetails = ({ displayedMovie, initialLoad }) => (
-  <div>
+  <div className="details">
     {!initialLoad ? (
       <h1>Loading..</h1>
     ) : (
