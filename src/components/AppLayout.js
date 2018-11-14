@@ -26,12 +26,12 @@ class AppLayout extends Component {
     return (
       <Fragment>
         <Layout
-          style={{
-            minHeight: "100vh",
-            background: `url(http://image.tmdb.org/t/p/w1280${
-              displayedMovie.backdrop_path
-            })`
-          }}
+        // style={{
+        //   minHeight: "100vh",
+        //   background: `url(http://image.tmdb.org/t/p/w1280${
+        //     displayedMovie.backdrop_path
+        //   })`
+        // }}
         >
           <Content style={{ marginTop: "100px" }}>
             <Row type="flex" justify="center" align="middle">

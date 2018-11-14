@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import { Input } from "antd";
+import { searchMovies } from "../actions/movie";
+
+import { AutoComplete } from "antd";
 
 //const TMDBLogo = "../images/logo.png";
 
@@ -13,6 +16,33 @@ import { Input } from "antd";
 //   />
 // );
 
-const Search = () => <Input placeholder="Movie Title" size="small" />;
+const Search = ({ searchMovies, movies }) => (
+  <AutoComplete
+    placeholder="Movie Title"
+    dataSource={handleMovies(movies)}
+    onSelect={value => console.log(value)}
+    onChange={value => searchMovies(value)}
+  />
+);
 
-export default connect()(Search);
+function handleMovies(movies) {
+  let moviesArr = [];
+  return (moviesArr = movies.map(movie => movie.title));
+}
+
+const mapStateToProps = state => ({
+  movies: state.movie.movies
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      searchMovies
+    },
+    dispatch
+  );
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Search);
