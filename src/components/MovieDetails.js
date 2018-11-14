@@ -1,23 +1,18 @@
 import React, { Fragment } from "react";
 import { Row, Col } from "antd";
 import { connect } from "react-redux";
+import styled from "styled-components";
 
 const MovieDetails = ({ displayedMovie, initialLoad }) => (
-  <div className="details">
+  <DetailsDiv>
     {!initialLoad ? (
       <h1>Loading..</h1>
     ) : (
       <Fragment>
-        <h1 style={{ color: "#fafafa" }}>{displayedMovie.title}</h1>
-        <span style={{ color: "#00FC87", fontSize: "1.3em" }}>
-          {displayedMovie.tagline}
-        </span>
-        <p style={{ color: "#fafafa", marginBottom: "1rem" }}>
-          {displayedMovie.overview}
-        </p>
-        <span style={{ color: "#00FC87", fontSize: "1.4em" }}>
-          {handleGenres(displayedMovie.genres)}
-        </span>
+        <h1>{displayedMovie.title}</h1>
+        <span className="tagline">{displayedMovie.tagline}</span>
+        <p className="overview">{displayedMovie.overview}</p>
+        <span className="genres">{handleGenres(displayedMovie.genres)}</span>
         <span
           style={{ color: "#fafafa", display: "block", marginBottom: "20px" }}
         >
@@ -81,7 +76,7 @@ const MovieDetails = ({ displayedMovie, initialLoad }) => (
         </Row>
       </Fragment>
     )}
-  </div>
+  </DetailsDiv>
 );
 
 function handleGenres(genres) {
@@ -104,3 +99,32 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(MovieDetails);
+
+const DetailsDiv = styled.div`
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  padding: 25px;
+  color: #fafafa;
+
+  h1 {
+    color: #fafafa;
+  }
+
+  .tagline {
+    font-size: 1.3em;
+    color: #00fc87;
+  }
+
+  .overview {
+    marginbottom: 1rem;
+  }
+
+  .genres {
+    color: #00fc87;
+    font-size: 1.4em;
+  }
+`;
+
+const Stats = styled.div`
+  display: grid;
+`;

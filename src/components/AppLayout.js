@@ -27,7 +27,6 @@ class AppLayout extends Component {
         <Poster />
 
         <MovieDetails />
-      
       </Grid>
     );
   }
@@ -54,10 +53,4 @@ export default connect(
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-
-  .details {
-    height: 100%;
-    background: rgba(0, 0, 0, 0.85);
-    padding: 25px;
-  }
 `;
