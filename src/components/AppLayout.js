@@ -25,42 +25,11 @@ class AppLayout extends Component {
     const { displayedMovie } = this.props;
     return (
       <Fragment>
-        <Layout
-          style={{
-            minHeight: "100vh",
-            background: `url(http://image.tmdb.org/t/p/w1280${
-              displayedMovie.backdrop_path
-            })`
-          }}
-        >
-          <Content style={{ marginTop: "100px" }}>
-            <Row type="flex" justify="center" align="middle">
-              <Col
-                style={{ textAlign: "center", background: "green" }}
-                span={6}
-              >
-                {/* <TMDBSvg /> */}
-              </Col>
-              <Col
-                style={{ textAlign: "center", background: "#ddd" }}
-                span={10}
-              >
-                <Search />
-              </Col>
-            </Row>
-            <Row type="flex" justify="center" align="start">
-              <Col span={6}>
-                <Poster />
-              </Col>
-              <Col
-                style={{ background: "rgba(0,0,0,.85)", padding: "25px" }}
-                span={10}
-              >
-                <MovieDetails />
-              </Col>
-            </Row>
-          </Content>
-        </Layout>
+        <Search />
+
+        <Poster />
+
+        <MovieDetails />
       </Fragment>
     );
   }
