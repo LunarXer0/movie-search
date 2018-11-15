@@ -20,17 +20,20 @@ const Search = ({ searchMovies, movies }) => (
   <AutoComplete
     style={{ gridColumn: "1 / -1" }}
     placeholder="Movie Title"
-    dataSource={handleMovies(movies)}
+    //dataSource={handleMovies(movies)}
     onSelect={value => console.log(value)}
     onChange={value => (value ? searchMovies(value) : "")}
-  />
+  >
+    {movies.map((movie, index) => (
+      <AutoComplete.Option
+        key={`movie-result-${index}`}
+        value={movie.id.toString()}
+      >
+        {movie.title}
+      </AutoComplete.Option>
+    ))}
+  </AutoComplete>
 );
-
-function handleMovies(movies) {
-  let moviesArr = [];
-  moviesArr = movies.map(movie => movie.title);
-  return moviesArr;
-}
 
 const mapStateToProps = state => ({
   movies: state.movie.movies
