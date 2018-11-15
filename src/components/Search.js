@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import { searchMovies } from "../actions/movie";
+import { searchMovies, getOption } from "../actions/movie";
 
 import { AutoComplete } from "antd";
 
@@ -16,11 +16,11 @@ import { AutoComplete } from "antd";
 //   />
 // );
 
-const Search = ({ searchMovies, movies }) => (
+const Search = ({ searchMovies, movies, getOption }) => (
   <AutoComplete
     style={{ gridColumn: "1 / -1" }}
     placeholder="Movie Title"
-    onSelect={value => console.log(value)}
+    onSelect={value => getOption(value)}
     onChange={value => (value ? searchMovies(value) : "")}
   >
     {movies.map((movie, index) => (
@@ -41,7 +41,8 @@ const mapStateToProps = store => ({
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      searchMovies
+      searchMovies,
+      getOption
     },
     dispatch
   );
