@@ -22,7 +22,7 @@ const Search = ({ searchMovies, movies }) => (
     placeholder="Movie Title"
     dataSource={handleMovies(movies)}
     onSelect={value => console.log(value)}
-    onChange={value => searchMovies(value)}
+    onChange={value => (value ? searchMovies(value) : "")}
   />
 );
 
