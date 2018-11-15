@@ -20,7 +20,6 @@ const Search = ({ searchMovies, movies }) => (
   <AutoComplete
     style={{ gridColumn: "1 / -1" }}
     placeholder="Movie Title"
-    //dataSource={handleMovies(movies)}
     onSelect={value => console.log(value)}
     onChange={value => (value ? searchMovies(value) : "")}
   >
@@ -35,8 +34,8 @@ const Search = ({ searchMovies, movies }) => (
   </AutoComplete>
 );
 
-const mapStateToProps = state => ({
-  movies: state.movie.movies
+const mapStateToProps = store => ({
+  movies: store.movie.movies
 });
 
 const mapDispatchToProps = dispatch =>
