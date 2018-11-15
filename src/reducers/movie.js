@@ -1,5 +1,6 @@
 export const SEARCH_MOVIE = "SEARCH_MOVIE";
 export const LOAD_INITIAL_MOVIE = "LOAD_INITIAL_MOVIE";
+export const GET_MOVIE_FROM_OPTION = "GET_MOVIE_FROM_OPTION";
 
 const initialState = {
   initialLoad: false,
@@ -20,6 +21,11 @@ const movie = (state = initialState, action) => {
       return {
         ...state,
         movies: data
+      };
+    case GET_MOVIE_FROM_OPTION:
+      return {
+        ...state,
+        displayedMovie: data
       };
     default:
       return state;

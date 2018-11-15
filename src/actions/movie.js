@@ -1,5 +1,9 @@
 import { API_KEY } from "../utils/api";
-import { LOAD_INITIAL_MOVIE, SEARCH_MOVIE } from "../reducers/movie";
+import {
+  LOAD_INITIAL_MOVIE,
+  SEARCH_MOVIE,
+  GET_MOVIE_FROM_OPTION
+} from "../reducers/movie";
 
 export function loadInitialMovie() {
   return async function(dispatch) {
@@ -24,6 +28,19 @@ export function searchMovies(title) {
     return dispatch({
       type: SEARCH_MOVIE,
       data: results
+    });
+  };
+}
+
+export function getOption(id) {
+  return async function(dispatch) {
+    const res = await fetch(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`
+    );
+    const movie = await res.json();
+    return dispatch({
+      type: GET_MOVIE_FROM_OPTION,
+      data: movie
     });
   };
 }

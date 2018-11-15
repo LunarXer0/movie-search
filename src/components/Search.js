@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 
-import { searchMovies } from "../actions/movie";
+import { searchMovies, getOption } from "../actions/movie";
 
 import { AutoComplete } from "antd";
 
@@ -16,30 +16,33 @@ import { AutoComplete } from "antd";
 //   />
 // );
 
-const Search = ({ searchMovies, movies }) => (
+const Search = ({ searchMovies, movies, getOption }) => (
   <AutoComplete
     style={{ gridColumn: "1 / -1" }}
     placeholder="Movie Title"
-    dataSource={handleMovies(movies)}
-    onSelect={value => console.log(value)}
-    onChange={value => searchMovies(value)}
-  />
+    onSelect={value => getOption(value)}
+    onChange={value => (value ? searchMovies(value) : "")}
+  >
+    {movies.map((movie, index) => (
+      <AutoComplete.Option
+        key={`movie-result-${index}`}
+        value={movie.id.toString()}
+      >
+        {movie.title}
+      </AutoComplete.Option>
+    ))}
+  </AutoComplete>
 );
 
-function handleMovies(movies) {
-  let moviesArr = [];
-  moviesArr = movies.map(movie => movie.title);
-  return moviesArr;
-}
-
-const mapStateToProps = state => ({
-  movies: state.movie.movies
+const mapStateToProps = store => ({
+  movies: store.movie.movies
 });
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
-      searchMovies
+      searchMovies,
+      getOption
     },
     dispatch
   );

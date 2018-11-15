@@ -19,6 +19,13 @@ class AppLayout extends Component {
       })`;
     }
   }
+
+  componentDidUpdate() {
+    const { displayedMovie } = this.props;
+    document.body.style.backgroundImage = `url(http://image.tmdb.org/t/p/w1280${
+      displayedMovie.backdrop_path
+    })`;
+  }
   render() {
     return (
       <Grid>
