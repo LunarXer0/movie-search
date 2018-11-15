@@ -18,13 +18,18 @@ import { AutoComplete } from "antd";
 
 const Search = ({ searchMovies, movies, getOption }) => (
   <AutoComplete
-    style={{ gridColumn: "1 / -1" }}
+    style={{
+      gridColumn: "2 / -1",
+      backgroundColor: "transparent",
+      marginBottom: "100px"
+    }}
     placeholder="Movie Title"
     onSelect={value => getOption(value)}
     onChange={value => (value ? searchMovies(value) : "")}
   >
     {movies.map((movie, index) => (
       <AutoComplete.Option
+        style={{ backgroundColor: "#343434", color: "#fafafa" }}
         key={`movie-result-${index}`}
         value={movie.id.toString()}
       >
