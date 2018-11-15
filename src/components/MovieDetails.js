@@ -20,25 +20,27 @@ const MovieDetails = ({ displayedMovie, initialLoad }) => (
         <Stats>
           <div>
             Original Release: <br />
-            <span>{displayedMovie.release_date}</span>
+            <span className="highlight">{displayedMovie.release_date}</span>
           </div>
 
           <div>
             Running Time:
             <br />
-            <span>{displayedMovie.runtime}</span> mins
+            <span className="highlight">{displayedMovie.runtime} mins</span>
           </div>
 
           <div>
             Box Office:
             <br />
-            <span>{displayedMovie.revenue}</span>
+            <span className="highlight">{displayedMovie.revenue}</span>
           </div>
 
           <div>
             Vote Average:
             <br />
-            <span>{displayedMovie.vote_average} / 10</span>
+            <span className="highlight">
+              {displayedMovie.vote_average} / 10
+            </span>
           </div>
         </Stats>
       </Fragment>
@@ -96,4 +98,10 @@ const Stats = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
+
+  .highlight {
+    color: #00fc87;
+    font-size: 1.6em;
+    line-height: 1.1em;
+  }
 `;
